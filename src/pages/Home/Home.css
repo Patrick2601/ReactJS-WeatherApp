@@ -36,6 +36,7 @@
 }
 .datetimetext {
   margin: 1.5em 0px;
+
   /* border: 1px solid; */
 }
 .citytext {
@@ -69,14 +70,16 @@
   display: none;
 }
 .searchdiv {
-  border: 1px solid;
+  /* border: 0.2rem solid; */
+  border-width: 0.01em;
+  /* border-style: solid; */
 
   display: none;
   width: 500px;
   height: 40px;
   align-items: center;
   justify-content: space-between;
-  border-radius: 7px;
+  border-radius: 4px;
   background-color: rgba(255, 255, 255, 0.1);
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
   padding: 0px 12px;
@@ -117,23 +120,6 @@
 }
 /* ==================================================================== */
 
-@media screen and (min-width: 1000px) {
-  .main {
-    padding: 0px 100px;
-  }
-  .datetime {
-
-    right: 0px;
-    /* border: 1px solid; */
-  }
-  .datetimetext {
-    display: contents;
-  }
-  .mainheader {
-    border: 1px solid;
-    padding: 0px;
-  }
-}
 /* @media screen and (min-width: 1000px) {
   .datetimetext {
     display: contents;
@@ -173,8 +159,26 @@
     display: none;
   }
   .datetime {
-  
     right: 30px;
+
     /* border: 1px solid; */
+  }
+}
+@media screen and (min-width: 1000px) {
+  .main {
+    padding: 0px 100px;
+  }
+  .datetime {
+    right: 0px;
+  }
+  .datetimetext {
+    display: contents;
+  }
+  .mainheader {
+    /* border: 1px solid; */
+    padding: 0px;
+  }
+  .datetimetext {
+    display: none;
   }
 }

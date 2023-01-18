@@ -10,7 +10,7 @@ function HomeComponent() {
   return (
     <div>
       <div className="weatherdetails">
-        <p className="datetimetext">Date and time</p>
+        <p className="datetimetext">DATE and TIME</p>
         <p className="citytext">City,state</p>
         <div>
           {liked ? (
