@@ -1,0 +1,102 @@
+* {
+  margin: 0px;
+  color: white;
+  font-size: 1.2rem;
+  font-family: "Roboto";
+  /* padding: 0px; */
+}
+
+.main {
+  height: 100vh;
+  width: 100vw;
+  background: linear-gradient(to right, #5d54c6, #ad518b);
+}
+.mainheader {
+  /* border: 1px solid; */
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 20px;
+}
+.baricon {
+  color: white;
+  font-size: 1.5rem;
+}
+.weatherLogo {
+  margin-right: 12rem;
+}
+.weatherdetails {
+  /* border: 1px solid; */
+  height: 75vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.datetimetext {
+  margin: 1.5em 0px;
+}
+.climateimg {
+  /* border: 1px solid; */
+  height: 100px;
+  width: 100px;
+  margin-top: 6rem;
+}
+.temperaturetext {
+  font-size: 3rem;
+  font-weight: bold;
+}
+.favbtn {
+  border: none;
+  background: transparent;
+  size: 20px;
+}
+.topnav {
+  display: none;
+}
+.searchdiv {
+  border: 1px solid;
+
+  display: none;
+  width: 500px;
+  height: 40px;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 7px;
+  background-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 1px 1px 5px rgba(0,0,0,0.4);
+  padding: 0px 12px;
+}
+.searchtextinput {
+  background: transparent;
+  border: none;
+  color: white;
+  /* border: 1px solid; */
+  width: 100%;
+}
+.searchtextinput::placeholder{
+  color: aliceblue;
+  font-size: 1rem;
+  padding-left: 2px;
+ 
+}
+/* ==================================================================== */
+@media screen and (min-width: 750px) {
+  .topnav {
+    display: block;
+  }
+  .baricon {
+    display: none;
+  }
+  .searchlogo {
+    display: none;
+  }
+  .searchdiv {
+    display: flex;
+
+  }
+  .mainheader {
+    /* border: 1px solid; */
+    padding: 0px 100px;
+  }
+}
