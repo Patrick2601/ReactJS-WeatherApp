@@ -9,7 +9,8 @@
 .main {
   height: 100vh;
   width: 100vw;
-  background: linear-gradient(to right, #5d54c6, #ad518b);
+  background: linear-gradient(to right, #5d5fce, #8e4091);
+  box-sizing: border-box;
 }
 .mainheader {
   /* border: 1px solid; */
@@ -35,6 +36,17 @@
 }
 .datetimetext {
   margin: 1.5em 0px;
+  /* border: 1px solid; */
+}
+.citytext {
+  margin: 1.5em 0px;
+  /* border: 1px solid; */
+  /* width: 90%; */
+}
+.addfavtext {
+  margin: 1.5em 00px;
+  /* border: 1px solid red; */
+  /* width: 90%; */
 }
 .climateimg {
   /* border: 1px solid; */
@@ -45,6 +57,8 @@
 .temperaturetext {
   font-size: 3rem;
   font-weight: bold;
+  text-align: center;
+  /* border: 1px solid; */
 }
 .favbtn {
   border: none;
@@ -64,7 +78,7 @@
   justify-content: space-between;
   border-radius: 7px;
   background-color: rgba(255, 255, 255, 0.1);
-  box-shadow: 1px 1px 5px rgba(0,0,0,0.4);
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
   padding: 0px 12px;
 }
 .searchtextinput {
@@ -74,13 +88,61 @@
   /* border: 1px solid; */
   width: 100%;
 }
-.searchtextinput::placeholder{
+.searchtextinput::placeholder {
   color: aliceblue;
   font-size: 1rem;
   padding-left: 2px;
- 
+}
+.topnav {
+  /* border: 1px solid; */
+  border-bottom: 1px solid rgba(225, 225, 255, 0.6);
+  padding: 0px 50px;
+  padding-bottom: 2.4px;
+  /* box-sizing: border-box; */
+  height: 2.8vh;
+  position: relative;
+}
+.datetime {
+  color: white;
+  position: absolute;
+  right: 100px;
+  /* border: 1px solid; */
+}
+.tablink {
+  color: white;
+  text-decoration: none;
+  margin-right: 20px;
+  font-size: 1.2rem;
+  /* border: 1px solid; */
 }
 /* ==================================================================== */
+
+@media screen and (min-width: 1000px) {
+  .main {
+    padding: 0px 100px;
+  }
+  .datetime {
+
+    right: 0px;
+    /* border: 1px solid; */
+  }
+  .datetimetext {
+    display: contents;
+  }
+  .mainheader {
+    border: 1px solid;
+    padding: 0px;
+  }
+}
+/* @media screen and (min-width: 1000px) {
+  .datetimetext {
+    display: contents;
+  }
+  .mainheader {
+    border: 1px solid;
+    padding: 0px;
+  }
+} */
 @media screen and (min-width: 750px) {
   .topnav {
     display: block;
@@ -93,10 +155,26 @@
   }
   .searchdiv {
     display: flex;
-
   }
-  .mainheader {
+  .weatherdetails {
     /* border: 1px solid; */
-    padding: 0px 100px;
+    align-items: flex-start;
+    padding: 0px 50px;
+  }
+  .climateimg {
+    /* border: 1px solid; */
+    align-self: center;
+  }
+  .temperaturetext {
+    margin-top: 100px;
+    align-self: center;
+  }
+  .datetimetext {
+    display: none;
+  }
+  .datetime {
+  
+    right: 30px;
+    /* border: 1px solid; */
   }
 }

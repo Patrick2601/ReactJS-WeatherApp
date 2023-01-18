@@ -1,4 +1,4 @@
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link, Outlet, Route, Routes } from "react-router-dom";
 import "./Home.css";
 import searchlogo from "../../assets/images/01_Home/Group2/icon_search_white.png";
 import weatherLogo from "../../assets/images/01_Home/logo_web.png";
@@ -10,8 +10,10 @@ import { faBars } from "@fortawesome/free-solid-svg-icons";
 
 import { useState } from "react";
 import Weatherdetails from "../../components/Weatherdetails";
+import HomeComponent from "../../components/HomeComponent";
+import Favourite from "../Favourite/favourite";
+import Recent from "../Recentsearch/Recent";
 function Home() {
-  const [liked, setliked] = useState(false);
   return (
     <div className="main">
       <header className="mainheader">
@@ -23,55 +25,58 @@ function Home() {
             type="text"
             className="searchtextinput"
             placeholder="Search here"
-           
             name="search"
           />
           <img src={searchlogo} />
         </div>
       </header>
+
       <div className="topnav">
-        <NavLink to="favourite">favt page</NavLink>
+        <NavLink
+          to="/"
+          className="tablink"
+          style={({ isActive }) => {
+            return {
+              borderBottom: isActive ? "2px solid #FFA222" : "none",
+              color: isActive ? "#FFA222" : "white",
+            };
+          }}
+        >
+          Home
+        </NavLink>
+        <NavLink
+          to="/favourite"
+          className="tablink"
+          style={({ isActive }) => {
+            return {
+              borderBottom: isActive ? "2px solid #FFA222" : "none",
+              color: isActive ? "#FFA222" : "white",
+            };
+          }}
+        >
+          Favourite
+        </NavLink>
+        <NavLink
+          to="/Recent"
+          className="tablink"
+          style={({ isActive }) => {
+            return {
+              borderBottom: isActive ? "2px solid #FFA222" : "none",
+              color: isActive ? "#FFA222" : "white",
+            };
+          }}
+        >
+          Rescent Search
+        </NavLink>
+        <span className="datetime">Date and time</span>
       </div>
+      <Routes>
+        <Route path="/" element={<HomeComponent />}></Route>
+        <Route path="/favourite" element={<Favourite />}></Route>
+        <Route path="/Recent" element={<Recent />}></Route>
+      </Routes>
 
-      <div className="weatherdetails">
-        <p className="datetimetext">Date and time</p>
-        <p className="datetimetext citytext">City,state</p>
-        <div>
-          {liked ? (
-            <button
-              className="favbtn"
-              onClick={() => {
-                console.log("gggg");
-                setliked(!liked);
-              }}
-            >
-              <img src={likeactive} />
-            </button>
-          ) : (
-            <button
-              className="favbtn"
-              onClick={() => {
-                console.log("gggg");
-                setliked(!liked);
-              }}
-            >
-              <img src={likeinactive} />
-            </button>
-          )}
-
-          <span className="addfavtext">Add to favourite</span>
-        </div>
-        <img src={sunny} className="climateimg" />
-        <div>
-          <span className="temperaturetext">31</span>
-          <span>&#8451;{"  "}</span>
-          <span>&#8457;</span>
-        </div>
-        <p className="datetimetext">Mostly Sunny</p>
-      </div>
-      {/* <NavLink to="about">Click to view our about page</NavLink> */}
-
-      <Weatherdetails />
+      {/* <Outlet /> */}
     </div>
   );
 }
