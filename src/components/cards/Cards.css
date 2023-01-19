@@ -1,7 +1,14 @@
 .card-container {
-  border: 1px solid;
+  /* border: 1px solid red; */
   display: flex;
   height: 90vh;
+  align-items: center;
+  flex-direction: column;
+}
+.card-container-web {
+  /* border: 1px solid red; */
+  display: flex;
+  height: 80vh;
   align-items: center;
   flex-direction: column;
 }
@@ -37,17 +44,25 @@
 }
 .card-temp-text {
   font-size: 1.4rem;
+  font-weight: bold;
 }
 .card-climate-text {
   font-size: 1rem;
 }
 .card-innertext-div {
-  border: 1px solid;
-  
+  /* border: 1px solid; */
+  width: 60%;
 }
 .card-climate-img {
   width: 30px;
   height: 30px;
   /* border: 1px solid; */
 }
-
+.web {
+  /* border: 1px solid; */
+  display: flex;
+  width: 260px;
+  height: 60px;
+  justify-content: space-between;
+  align-items: center;
+}

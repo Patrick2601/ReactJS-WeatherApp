@@ -9,9 +9,12 @@ function FavouriteMobile() {
         <img src={img}></img>
         <p>No favourites added</p>
       </div> */}
-
-      {/* <CardMobile/> */}
-      <CardWeb />
+      <div className="mobile-view">
+        <CardMobile />
+      </div>
+      <div className="web-view">
+        <CardWeb />
+      </div>
     </div>
   );
 }

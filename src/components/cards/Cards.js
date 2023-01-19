@@ -19,28 +19,30 @@ function CardMobile() {
         </div>
         <img src={likeactive} className="card-likeactive-img" />
       </div>
-      <div className="card"></div>
     </div>
   );
 }
 function CardWeb() {
   return (
-    <div className="card-container">
+    <div className="card-container-web">
       <div className="top-text-div">
         <p>6 city added to favourite </p>
         <p>Remove all </p>
       </div>
       <div className="card">
-        <div className="card-innertext-div">
-          <p className="card-city-text">CIty,state</p>
+        <p className="card-city-text">CIty,state</p>
+        <div
+       
+          className='web'
+        >
           <img src={likeactive} className="card-climate-img" />
           <span className="card-temp-text"> 31 </span>
           <span> °C </span>
           <span className="card-climate-text"> Mostly sunny</span>
         </div>
+
         <img src={likeactive} className="card-likeactive-img" />
       </div>
-      <div className="card"></div>
     </div>
   );
 }
