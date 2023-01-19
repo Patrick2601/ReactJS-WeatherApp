@@ -7,17 +7,52 @@ import likeinactive from "../../assets/images/icon_favourite.png";
 import sunny from "../../assets/images/01_Home/background/icon_mostly_sunny.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
-
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { useRef } from "react";
 import { useState } from "react";
 import Weatherdetails from "../../components/Weatherdetails";
 import HomeComponent from "../../components/HomeComponent";
 import Favourite from "../Favourite/favourite";
 import Recent from "../Recentsearch/Recent";
 function Home() {
+  const ref = useRef(null);
+  const openDrawer = () => {
+    console.log("ggg");
+    ref.current.style.display = "block";
+  };
   return (
     <div className="main">
+      <div ref={ref} className="drawer">
+        <button
+          style={{ background: "transparent", border: "0px" }}
+          onClick={() => {
+           
+            // ref.current.style.animationName = "drawerclose";
+            ref.current.style.display = "none";
+          }}
+        >
+          <FontAwesomeIcon
+            icon={faPlus}
+            size="2x"
+            style={{
+              transform: "rotate(45deg)",
+              position: "absolute",
+              right: "10px",
+              top: "10px",
+            }}
+          />
+        </button>
+        <p className="drawer-text">favourite</p>
+        <p className="drawer-text">Recent Search</p>
+      </div>
       <header className="mainheader">
-        <FontAwesomeIcon icon={faBars} className="baricon" />
+        <button
+          style={{ background: "transparent", border: "0px" }}
+          onClick={openDrawer}
+        >
+          <FontAwesomeIcon icon={faBars} className="baricon" />
+        </button>
+
         <img src={weatherLogo} className="weatherLogo" />
         <img src={searchlogo} className="searchlogo" />
         <div className="searchdiv">
