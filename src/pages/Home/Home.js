@@ -14,7 +14,11 @@ import Weatherdetails from "../../components/Weatherdetails";
 import HomeComponent from "../../components/HomeComponent";
 import Favourite from "../Favourite/favourite";
 import Recent from "../Recentsearch/Recent";
+import { useNavigate } from "react-router-dom";
+
 function Home() {
+  const navigate = useNavigate();
+
   const ref = useRef(null);
   const openDrawer = () => {
     console.log("ggg");
@@ -24,9 +28,8 @@ function Home() {
     <div className="main">
       <div ref={ref} className="drawer">
         <button
-          style={{ background: "transparent", border: "0px" }}
+          style={{ border: "0px", background: "transparent" }}
           onClick={() => {
-           
             ref.current.style.display = "none";
           }}
         >
@@ -41,8 +44,33 @@ function Home() {
             }}
           />
         </button>
-        <p className="drawer-text">favourite</p>
-        <p className="drawer-text">Recent Search</p>
+        <button
+          className="btn"
+          onClick={() => {
+            navigate("/");
+            ref.current.style.display = "none";
+          }}
+        >
+          <p className="drawer-text">Home</p>
+        </button>
+        <button
+          className="btn"
+          onClick={() => {
+            navigate("/favourite");
+            ref.current.style.display = "none";
+          }}
+        >
+          <p className="drawer-text">favourite</p>
+        </button>
+        <button
+          className="btn"
+          onClick={() => {
+            navigate("/Recent");
+            ref.current.style.display = "none";
+          }}
+        >
+          <p className="drawer-text">Recent Search</p>
+        </button>
       </div>
       <header className="mainheader">
         <button
