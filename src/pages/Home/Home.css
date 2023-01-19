@@ -121,7 +121,7 @@
 .drawer {
   /* border: 1px solid; */
   height: 100vh;
-  width: 50vw;
+  width: 70vw;
   position: absolute;
   display: none;
   animation-name: drawer;
@@ -129,9 +129,10 @@
   animation-duration: 0.2s;
   animation-iteration-count: 1;
   animation-timing-function: ease-in-out;
-  background-color: rgb(195, 20, 20);
+  background-color: #8e4091;
   padding: 20px;
   box-sizing: border-box;
+  z-index: 1;
 }
 .drawer-text {
   color: #ffd63a;

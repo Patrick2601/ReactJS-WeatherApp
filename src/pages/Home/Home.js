@@ -27,7 +27,6 @@ function Home() {
           style={{ background: "transparent", border: "0px" }}
           onClick={() => {
            
-            // ref.current.style.animationName = "drawerclose";
             ref.current.style.display = "none";
           }}
         >
