@@ -4,13 +4,16 @@ import { useState } from "react";
 import likeactive from "../assets/images/02_Home_Favourite/Group/icon_favourite_Active.png";
 import Weatherdetails from "./Weatherdetails";
 import likeinactive from "../assets/images/icon_favourite.png";
+import moment from "moment";
 import sunny from "../assets/images/01_Home/background/icon_mostly_sunny.png";
 function HomeComponent() {
   const [liked, setliked] = useState(false);
   return (
     <div>
       <div className="weatherdetails">
-        <p className="datetimetext">DATE and TIME</p>
+        <p className="datetimetext">
+          {moment().format("ddd, DD MMM YYYY h:mm:a")}
+        </p>
         <p className="citytext">City,state</p>
         <div>
           {liked ? (
@@ -42,7 +45,7 @@ function HomeComponent() {
           <span className="temperaturetext">31</span>
           <span>&#8451;{"  "}</span>
           <span>&#8457;</span>
-        <p className="climatetext">Mostly Sunny</p>
+          <p className="climatetext">Mostly Sunny</p>
         </div>
       </div>
 
