@@ -1,0 +1,15 @@
+.favcontainer {
+  /* border: 1px solid; */
+  display: flex;
+  flex-direction: column;
+  min-height: 90vh;
+  justify-content: center;
+  /* align-items: center; */
+}
+.no-fav-div {
+  border: 1px solid;
+  align-self: center;
+  text-align: center;
+  text-transform: capitalize;
+
+}
