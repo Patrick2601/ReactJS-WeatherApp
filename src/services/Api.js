@@ -1,3 +1,6 @@
+import axios from "axios";
+const BASE_URL = "https://api.openweathermap.org/data/2.5/weather?";
+
 export const getDataFromApi = async (string) => {
   const options = {
     method: "GET",
@@ -16,4 +19,12 @@ export const getDataFromApi = async (string) => {
   } catch (err) {
     console.log(err);
   }
+};
+
+export const getWeather = async (place) => {
+  const response = await axios.get(
+    BASE_URL +
+      `q=${place}&appid=3653e06aa80eb94e0a2921c221abd614`
+  );
+  return response.data;
 };

@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Searchpage.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStepBackward } from "@fortawesome/free-solid-svg-icons";
+import { getDataFromApi, getWeather } from "../../services/Api";
 
 function Searchpage({ searchpage, setSearchPage }) {
-
+  const [text, setText] = useState("");
   return (
     <div className="search-main">
       <div
@@ -24,15 +25,21 @@ function Searchpage({ searchpage, setSearchPage }) {
         >
           <FontAwesomeIcon
             icon={faStepBackward}
-            size="2x"
             style={{
               position: "absolute",
               left: "10px",
-              top: "25px",
+              top: "28px",
+              fontSize: "2.2rem",
             }}
           />
         </button>
         <input
+          onChange={async (e) => {
+            setText(e.target.value);
+            console.log(text);
+            const response = await getWeather(text);
+            console.log(response);
+          }}
           type="text"
           className="searchtextinput"
           placeholder="Search City"
