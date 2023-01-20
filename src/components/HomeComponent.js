@@ -89,7 +89,7 @@ function HomeComponent({ cityname }) {
             </div>
           </div>
 
-          <Weatherdetails WeatherData={weatherData}/>
+          <Weatherdetails WeatherData={weatherData} />
         </>
       ) : (
         <div
@@ -97,6 +97,8 @@ function HomeComponent({ cityname }) {
             textAlign: "center",
             // border: "1px solid",
             margin: "300px auto",
+            opacity: "0",
+            animation: "search 1s ease 0.3s 1 forwards",
           }}
         >
           Search a City

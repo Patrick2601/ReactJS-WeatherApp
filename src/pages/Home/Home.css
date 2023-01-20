@@ -41,6 +41,8 @@
   display: flex;
   align-items: center;
   flex-direction: column;
+  opacity: 0;
+  animation: search 1s ease 0.3s 1 forwards;
 }
 .datetimetext {
   margin: 1.5em 0px;
@@ -56,7 +58,7 @@
 }
 .addfavtext {
   margin: 1.5em 00px;
-  color: #FFA222;
+  color: #ffa222;
   font-size: 0.9rem;
   /* border: 1px solid red; */
   /* width: 90%; */
@@ -128,7 +130,6 @@
 }
 .searchtextinput:focus {
   outline: none;
- 
 }
 .searchtextinput::placeholder {
   color: aliceblue;
@@ -190,11 +191,6 @@
   text-align: center;
 }
 
-@keyframes drawer {
-  0% {
-    transform: translateX(-100px);
-  }
-}
 
 /* ==================================================================== */
 
@@ -207,6 +203,11 @@
     padding: 0px;
   }
 } */
+@keyframes drawer {
+  0% {
+    transform: translateX(-100px);
+  }
+}
 @media screen and (min-width: 750px) {
   .topnav {
     display: block;

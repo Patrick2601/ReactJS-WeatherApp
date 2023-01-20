@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import "./Searchpage.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStepBackward } from "@fortawesome/free-solid-svg-icons";
+import { faCircleArrowLeft } from "@fortawesome/free-solid-svg-icons";
+
 import { getDataFromApi } from "../../services/Api";
 
 function Searchpage({ setCityName, setSearchPage }) {
@@ -26,10 +27,11 @@ function Searchpage({ setCityName, setSearchPage }) {
           }}
         >
           <FontAwesomeIcon
-            icon={faStepBackward}
+            icon={faCircleArrowLeft}
+            color="black"
             style={{
               position: "absolute",
-              left: "10px",
+              left: "30px",
               top: "28px",
               fontSize: "2.2rem",
             }}
@@ -46,7 +48,7 @@ function Searchpage({ setCityName, setSearchPage }) {
           placeholder="Search City"
           name="search"
           style={{
-            width: "400px",
+            width: "70%",
             height: "50px",
             border: "1px solid",
             borderRadius: "10px",

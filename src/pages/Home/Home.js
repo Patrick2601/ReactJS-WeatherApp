@@ -145,6 +145,7 @@ function Home() {
                 return {
                   borderBottom: isActive ? "3px solid #FFA222" : "none",
                   color: isActive ? "#FFA222" : "white",
+                  fontSize:'1.1rem'
                 };
               }}
             >
@@ -157,6 +158,7 @@ function Home() {
                 return {
                   borderBottom: isActive ? "3px solid #FFA222" : "none",
                   color: isActive ? "#FFA222" : "white",
+                  fontSize:'1.1rem'
                 };
               }}
             >
@@ -169,6 +171,7 @@ function Home() {
                 return {
                   borderBottom: isActive ? "3px solid #FFA222" : "none",
                   color: isActive ? "#FFA222" : "white",
+                  fontSize:'1.1rem'
                 };
               }}
             >
