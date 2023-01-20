@@ -23,6 +23,7 @@ function Home() {
   const [searchpage, setSearchPage] = useState(false);
   const navigate = useNavigate();
   const ref = useRef(null);
+  const ref1 = useRef(null);
 
   const openDrawer = () => {
     console.log("ggg");
@@ -100,13 +101,12 @@ function Home() {
             </button>
             <div className="searchdiv">
               <input
-             
+                ref={ref1}
                 onChange={async (e) => {
                   setText(e.target.value);
                   const response = await getDataFromApi(text);
                   console.log(response);
                   setCities(response);
-                  
                 }}
                 type="text"
                 className="searchtextinput"
@@ -127,6 +127,7 @@ function Home() {
                       onClick={async () => {
                         setCityName(e);
                         cities.length = 0;
+                        ref1.current.value = "";
                       }}
                     >
                       <p>{e.name}</p>
