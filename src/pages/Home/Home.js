@@ -29,8 +29,7 @@ function Home() {
     console.log("ggg");
     ref.current.style.display = "block";
   };
-  // useEffect(() => {}, [cities]);
-  // console.log(cityname);
+
   return (
     <div className="main">
       <div ref={ref} className="drawer">
@@ -101,6 +100,7 @@ function Home() {
             </button>
             <div className="searchdiv">
               <input
+              autoComplete="off"
                 ref={ref1}
                 onChange={async (e) => {
                   setText(e.target.value);
@@ -143,7 +143,7 @@ function Home() {
               className="tablink"
               style={({ isActive }) => {
                 return {
-                  borderBottom: isActive ? "2px solid #FFA222" : "none",
+                  borderBottom: isActive ? "3px solid #FFA222" : "none",
                   color: isActive ? "#FFA222" : "white",
                 };
               }}
@@ -155,7 +155,7 @@ function Home() {
               className="tablink"
               style={({ isActive }) => {
                 return {
-                  borderBottom: isActive ? "2px solid #FFA222" : "none",
+                  borderBottom: isActive ? "3px solid #FFA222" : "none",
                   color: isActive ? "#FFA222" : "white",
                 };
               }}
@@ -167,7 +167,7 @@ function Home() {
               className="tablink"
               style={({ isActive }) => {
                 return {
-                  borderBottom: isActive ? "2px solid #FFA222" : "none",
+                  borderBottom: isActive ? "3px solid #FFA222" : "none",
                   color: isActive ? "#FFA222" : "white",
                 };
               }}
@@ -175,7 +175,8 @@ function Home() {
               Rescent Search
             </NavLink>
             <span className="datetime">
-              {moment().format("ddd, DD MMM YYYY hh:mm:a")}
+              {moment().format("ddd, DD MMM YYYY hh:mm")}
+              <span>{moment().format("a")}</span>
             </span>
           </div>
         </>
