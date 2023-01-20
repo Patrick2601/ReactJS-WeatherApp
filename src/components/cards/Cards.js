@@ -6,7 +6,7 @@ function CardMobile() {
   return (
     <div className="card-container">
       <div className="top-text-div">
-        <p>6 city added to favourite </p>
+        <p>6 City added to favourite </p>
         <p>Remove all </p>
       </div>
       <div className="card">
@@ -26,7 +26,7 @@ function CardWeb() {
   return (
     <div className="card-container-web">
       <div className="top-text-div">
-        <p>6 city added to favourite </p>
+        <p>6 City added to favourite </p>
         <p>Remove all </p>
       </div>
       <div className="card">
