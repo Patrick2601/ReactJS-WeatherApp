@@ -16,6 +16,7 @@ import Searchpage from "../SearchPage/Searchpage";
 import moment from "moment";
 
 function Home() {
+  const [cityname, setCityName] = useState("");
   const [searchpage, setSearchPage] = useState(false);
   const navigate = useNavigate();
   const ref = useRef(null);
@@ -23,6 +24,7 @@ function Home() {
     console.log("ggg");
     ref.current.style.display = "block";
   };
+  // console.log(cityname);
   return (
     <div className="main">
       <div ref={ref} className="drawer">
@@ -143,18 +145,18 @@ function Home() {
               {moment().format("ddd, DD MMM YYYY hh:mm:a")}
             </span>
           </div>
-          <Routes>
-            <Route path="/" element={<HomeComponent />}></Route>
-            <Route path="/favourite" element={<Favourite />}></Route>
-            <Route path="/Recent" element={<Recent />}></Route>
-            <Route path="/Search" element={<Searchpage />}></Route>
-          </Routes>
         </>
       ) : (
-        <Searchpage setSearchPage={setSearchPage} />
+        <Searchpage setSearchPage={setSearchPage} setCityName={setCityName} />
       )}
 
       {/* <Outlet /> */}
+      <Routes>
+        <Route path="/" element={<HomeComponent cityname={cityname} />}></Route>
+        <Route path="/favourite" element={<Favourite />}></Route>
+        <Route path="/Recent" element={<Recent />}></Route>
+        <Route path="/Search" element={<Searchpage />}></Route>
+      </Routes>
     </div>
   );
 }

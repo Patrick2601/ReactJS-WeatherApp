@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import { useState } from "react";
 import likeactive from "../assets/images/02_Home_Favourite/Group/icon_favourite_Active.png";
@@ -6,50 +6,102 @@ import Weatherdetails from "./Weatherdetails";
 import likeinactive from "../assets/images/icon_favourite.png";
 import moment from "moment";
 import sunny from "../assets/images/01_Home/background/icon_mostly_sunny.png";
-function HomeComponent() {
+import { getWeather } from "../services/Api";
+function HomeComponent({ cityname }) {
+  const [tempToggle, settemptoggle] = useState(false);
   const [liked, setliked] = useState(false);
+  const [weatherData, setWeatherData] = useState({});
+  useEffect(() => {
+    setTimeout(async () => {
+      const response = await getWeather(cityname.name);
+      console.log("%%%%%", response);
+      setWeatherData(response);
+    }, 500);
+  }, [cityname]);
   return (
     <div>
-      <div className="weatherdetails">
-        <p className="datetimetext">
-          {moment().format("ddd, DD MMM YYYY h:mm:a")}
-        </p>
-        <p className="citytext">City,state</p>
-        <div>
-          {liked ? (
-            <button
-              className="favbtn"
-              onClick={() => {
-                console.log("gggg");
-                setliked(!liked);
-              }}
-            >
-              <img src={likeactive} />
-            </button>
-          ) : (
-            <button
-              className="favbtn"
-              onClick={() => {
-                console.log("gggg");
-                setliked(!liked);
-              }}
-            >
-              <img src={likeinactive} />
-            </button>
-          )}
+      {JSON.stringify(weatherData) !== "{}" ? (
+        <>
+          <div className="weatherdetails">
+            <p className="datetimetext">
+              {moment().format("ddd, DD MMM YYYY h:mm:a")}
+            </p>
+            <p className="citytext">
+              {cityname.name},{cityname.region}
+            </p>
+            <div>
+              {liked ? (
+                <button
+                  className="favbtn"
+                  onClick={() => {
+                    console.log("gggg");
+                    setliked(!liked);
+                  }}
+                >
+                  <img src={likeactive} />
+                </button>
+              ) : (
+                <button
+                  className="favbtn"
+                  onClick={() => {
+                    console.log("gggg");
+                    setliked(!liked);
+                  }}
+                >
+                  <img src={likeinactive} />
+                </button>
+              )}
 
-          <span className="addfavtext">Add to favourite</span>
-        </div>
-        <img src={sunny} className="climateimg" />
-        <div className="temperaturetext">
-          <span className="temperaturetext">31</span>
-          <span>&#8451;{"  "}</span>
-          <span>&#8457;</span>
-          <p className="climatetext">Mostly Sunny</p>
-        </div>
-      </div>
+              <span className="addfavtext">Add to favourite</span>
+            </div>
+            <img src={sunny} className="climateimg" />
+            <div className="temperaturetext">
+              {tempToggle ? (
+                <>
+                  <span className="temperaturetext">
+                    {(weatherData.main.temp - 273.15).toFixed(1)}
+                  </span>{" "}
+                  <button
+                    onClick={() => settemptoggle(!tempToggle)}
+                    style={{ border: "0px", background: "transparent" }}
+                  >
+                    <span>&#8451;{"  "}</span>
+                  </button>
+                </>
+              ) : (
+                <>
+                  <span className="temperaturetext">
+                    {((weatherData.main.temp - 273.15) * 1.8 + 32).toFixed(1)}
+                  </span>
+                  <button
+                    onClick={() => settemptoggle(!tempToggle)}
+                    style={{ border: "0px", background: "transparent" }}
+                  >
+                    {" "}
+                    <span>&#8457;</span>
+                  </button>
+                </>
+              )}
 
-      <Weatherdetails />
+              <p className="climatetext">
+                {weatherData.weather[0].description}
+              </p>
+            </div>
+          </div>
+
+          <Weatherdetails WeatherData={weatherData}/>
+        </>
+      ) : (
+        <div
+          style={{
+            textAlign: "center",
+            // border: "1px solid",
+            margin: "300px auto",
+          }}
+        >
+          Search a City
+        </div>
+      )}
     </div>
   );
 }

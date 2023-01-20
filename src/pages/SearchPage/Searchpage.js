@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import "./Searchpage.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStepBackward } from "@fortawesome/free-solid-svg-icons";
-import { getDataFromApi, getWeather } from "../../services/Api";
+import { getDataFromApi } from "../../services/Api";
 
-function Searchpage({ searchpage, setSearchPage }) {
+function Searchpage({ setCityName, setSearchPage }) {
   const [text, setText] = useState("");
+  const [cities, setCities] = useState([]);
+
   return (
     <div className="search-main">
       <div
@@ -36,9 +38,8 @@ function Searchpage({ searchpage, setSearchPage }) {
         <input
           onChange={async (e) => {
             setText(e.target.value);
-            console.log(text);
-            const response = await getWeather(text);
-            console.log(response);
+            const response = await getDataFromApi(text);
+            setCities(response);
           }}
           type="text"
           className="searchtextinput"
@@ -53,6 +54,27 @@ function Searchpage({ searchpage, setSearchPage }) {
           }}
         />
       </div>
+      {cities.length > 0
+        ? cities.map((e) => {
+            return (
+              <div>
+                <button
+                  onClick={() => {
+                    setCityName(e);
+                    setSearchPage(false);
+                  }}
+                  style={{
+                    border: "0px",
+                    background: "transparent",
+                    width: "100%",
+                  }}
+                >
+                  <p className="city-text">{e.name}</p>
+                </button>
+              </div>
+            );
+          })
+        : null}
     </div>
   );
 }

@@ -22,9 +22,11 @@ export const getDataFromApi = async (string) => {
 };
 
 export const getWeather = async (place) => {
+
   const response = await axios.get(
     BASE_URL +
       `q=${place}&appid=3653e06aa80eb94e0a2921c221abd614`
   );
+
   return response.data;
 };
