@@ -5,7 +5,7 @@ import weatherLogo from "../../assets/images/01_Home/logo_web.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useState } from "react";
 import Weatherdetails from "../../components/Weatherdetails";
 import HomeComponent from "../../components/HomeComponent";
@@ -14,16 +14,21 @@ import Recent from "../Recentsearch/Recent";
 import { useNavigate } from "react-router-dom";
 import Searchpage from "../SearchPage/Searchpage";
 import moment from "moment";
+import { getDataFromApi } from "../../services/Api";
 
 function Home() {
+  const [text, setText] = useState("");
+  const [cities, setCities] = useState([]);
   const [cityname, setCityName] = useState("");
   const [searchpage, setSearchPage] = useState(false);
   const navigate = useNavigate();
   const ref = useRef(null);
+
   const openDrawer = () => {
     console.log("ggg");
     ref.current.style.display = "block";
   };
+  // useEffect(() => {}, [cities]);
   // console.log(cityname);
   return (
     <div className="main">
@@ -95,6 +100,14 @@ function Home() {
             </button>
             <div className="searchdiv">
               <input
+             
+                onChange={async (e) => {
+                  setText(e.target.value);
+                  const response = await getDataFromApi(text);
+                  console.log(response);
+                  setCities(response);
+                  
+                }}
                 type="text"
                 className="searchtextinput"
                 placeholder="Search here"
@@ -102,6 +115,25 @@ function Home() {
               />
 
               <img src={searchlogo} />
+              {cities.length > 0 ? (
+                <div className="cities-div-web">
+                  {cities.map((e) => (
+                    <button
+                      style={{
+                        background: "transparent",
+                        border: "0px",
+                        width: "100%",
+                      }}
+                      onClick={async () => {
+                        setCityName(e);
+                        cities.length = 0;
+                      }}
+                    >
+                      <p>{e.name}</p>
+                    </button>
+                  ))}
+                </div>
+              ) : null}
             </div>
           </header>
           <div className="topnav">
