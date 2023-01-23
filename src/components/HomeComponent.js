@@ -7,13 +7,21 @@ import likeinactive from "../assets/images/icon_favourite.png";
 import moment from "moment";
 import sunny from "../assets/images/01_Home/background/icon_mostly_sunny.png";
 import { getWeather } from "../services/Api";
-import { useDispatch } from "react-redux";
-import { addSearchData } from "../Redux/WeatherSlice";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  addSearchData,
+  addToFavData,
+  filterFavData,
+} from "../Redux/WeatherSlice";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 function HomeComponent({ cityname }) {
   const dispatch = useDispatch();
   const [tempToggle, settemptoggle] = useState(false);
   const [liked, setliked] = useState(false);
   const [weatherData, setWeatherData] = useState({});
+  const favData = useSelector((state) => state.weather.favData);
   useEffect(() => {
     setTimeout(async () => {
       if (cityname.name !== undefined) {
@@ -23,6 +31,22 @@ function HomeComponent({ cityname }) {
       }
     }, 1000);
   }, [cityname]);
+  console.log("favDatt", favData);
+  const addFav = () => {
+    console.log("gggg");
+    dispatch(addToFavData(weatherData));
+    setliked(!liked);
+    toast.success("Added to Favourite", {
+      position: "top-right",
+      autoClose: 1000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: false,
+      progress: undefined,
+      theme: "dark",
+    });
+  };
   return (
     <div>
       {JSON.stringify(weatherData) !== "{}" ? (
@@ -35,22 +59,33 @@ function HomeComponent({ cityname }) {
               {cityname.name},{cityname.region}
             </p>
             <div>
-              {liked ? (
-                <button
-                  className="favbtn"
-                  onClick={() => {
-                    // console.log("gggg");
-                    setliked(!liked);
-                  }}
-                >
-                  <img src={likeactive} />
-                </button>
+              {favData.length > 0 ? (
+                favData.filter((e) => e.name === cityname.name).length > 0 ? (
+                  <button
+                    className="favbtn"
+                    onClick={() => {
+                      // console.log("gggg88");
+                      dispatch(filterFavData(cityname.name));
+                      setliked(!liked);
+                    }}
+                  >
+                    <img src={likeactive} />
+                  </button>
+                ) : (
+                  <button
+                    className="favbtn"
+                    onClick={() => {
+                      addFav();
+                    }}
+                  >
+                    <img src={likeinactive} />
+                  </button>
+                )
               ) : (
                 <button
                   className="favbtn"
                   onClick={() => {
-                    // console.log("gggg");
-                    setliked(!liked);
+                    addFav();
                   }}
                 >
                   <img src={likeinactive} />
@@ -58,10 +93,23 @@ function HomeComponent({ cityname }) {
               )}
 
               <span className="addfavtext">Add to favourite</span>
+              <ToastContainer
+              // position="top-right"
+              // autoClose={5000}
+              // hideProgressBar={false}
+              // newestOnTop={false}
+              // closeOnClick
+              // rtl={false}
+              // pauseOnFocusLoss
+              // draggable
+              // pauseOnHover
+              // theme="light"
+              // transition='zoom'
+              />
             </div>
             <img src={sunny} className="climateimg" />
             <div className="temperaturetext">
-              {tempToggle ? (
+              {!tempToggle ? (
                 <>
                   <span className="temperaturetext">
                     {(weatherData.main.temp - 273.15).toFixed(1)}

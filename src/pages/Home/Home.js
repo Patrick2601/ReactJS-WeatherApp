@@ -15,7 +15,9 @@ import { useNavigate } from "react-router-dom";
 import Searchpage from "../SearchPage/Searchpage";
 import moment from "moment";
 import { getDataFromApi } from "../../services/Api";
-
+import { useDispatch } from "react-redux";
+import { setState } from "../../Redux/WeatherSlice";
+import { v4 as uuidv4 } from 'uuid';
 function Home() {
   const [text, setText] = useState("");
   const [cities, setCities] = useState([]);
@@ -24,6 +26,7 @@ function Home() {
   const navigate = useNavigate();
   const ref = useRef(null);
   const ref1 = useRef(null);
+  const dispatch = useDispatch();
 
   const openDrawer = () => {
     console.log("ggg");
@@ -100,12 +103,12 @@ function Home() {
             </button>
             <div className="searchdiv">
               <input
-              autoComplete="off"
+                autoComplete="off"
                 ref={ref1}
                 onChange={async (e) => {
                   setText(e.target.value);
                   const response = await getDataFromApi(text);
-                  // console.log(response);
+                  
                   setCities(response);
                 }}
                 type="text"
@@ -119,6 +122,7 @@ function Home() {
                 <div className="cities-div-web">
                   {cities.map((e) => (
                     <button
+                    key={uuidv4()}
                       style={{
                         background: "transparent",
                         border: "0px",
@@ -126,9 +130,10 @@ function Home() {
                       }}
                       onClick={async () => {
                         setCityName(e);
-                        // console.log(e);
+                    
                         cities.length = 0;
                         ref1.current.value = "";
+                        dispatch(setState());
                       }}
                     >
                       <p>{e.name}</p>
@@ -146,7 +151,7 @@ function Home() {
                 return {
                   borderBottom: isActive ? "3px solid #FFA222" : "none",
                   color: isActive ? "#FFA222" : "white",
-                  fontSize:'1.1rem'
+                  fontSize: "1.1rem",
                 };
               }}
             >
@@ -159,7 +164,7 @@ function Home() {
                 return {
                   borderBottom: isActive ? "3px solid #FFA222" : "none",
                   color: isActive ? "#FFA222" : "white",
-                  fontSize:'1.1rem'
+                  fontSize: "1.1rem",
                 };
               }}
             >
@@ -172,11 +177,11 @@ function Home() {
                 return {
                   borderBottom: isActive ? "3px solid #FFA222" : "none",
                   color: isActive ? "#FFA222" : "white",
-                  fontSize:'1.1rem'
+                  fontSize: "1.1rem",
                 };
               }}
             >
-              Rescent Search
+              Recent Search
             </NavLink>
             <span className="datetime">
               {moment().format("ddd, DD MMM YYYY hh:mm")}

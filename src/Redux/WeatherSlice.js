@@ -3,7 +3,10 @@ import { createSlice } from "@reduxjs/toolkit";
 const weatherSlice = createSlice({
   name: "weather",
   initialState: {
+    allData: [],
     searchData: [],
+    favData: [],
+    state: false,
   },
   reducers: {
     addSearchData: (state, action) => {
@@ -17,8 +20,33 @@ const weatherSlice = createSlice({
     deleteSearchData: (state, action) => {
       state.searchData = [];
     },
+    addToFavData: (state, action) => {
+      const cities = state.favData.map((e) => e.name);
+      if (cities.includes(action.payload.name)) {
+        alert("City already exist");
+      } else {
+        state.allData.push(action.payload);
+        state.favData.push(action.payload);
+      }
+    },
+    filterFavData: (state, action) => {
+      state.favData = state.allData.filter((e) => e.name !== action.payload);
+    },
+    deleteFavData: (state, action) => {
+      state.favData = [];
+    },
+    setState: (state, action) => {
+      state.state = !state.state;
+    },
   },
 });
 
-export const { addSearchData, deleteSearchData } = weatherSlice.actions;
+export const {
+  addSearchData,
+  deleteSearchData,
+  addToFavData,
+  filterFavData,
+  deleteFavData,
+  setState,
+} = weatherSlice.actions;
 export default weatherSlice.reducer;
