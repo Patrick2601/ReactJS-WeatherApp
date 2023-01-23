@@ -17,16 +17,17 @@ export const getDataFromApi = async (string) => {
     const data = response.json();
     return data;
   } catch (err) {
-    console.log(err);
+    // console.log(err);
   }
 };
 
 export const getWeather = async (place) => {
-
-  const response = await axios.get(
-    BASE_URL +
-      `q=${place}&appid=3653e06aa80eb94e0a2921c221abd614`
-  );
-
-  return response.data;
+  try {
+    const response = await axios.get(
+      BASE_URL + `q=${place}&appid=3653e06aa80eb94e0a2921c221abd614`
+    );
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
 };

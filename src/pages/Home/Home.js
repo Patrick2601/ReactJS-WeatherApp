@@ -19,7 +19,7 @@ import { getDataFromApi } from "../../services/Api";
 function Home() {
   const [text, setText] = useState("");
   const [cities, setCities] = useState([]);
-  const [cityname, setCityName] = useState("");
+  const [cityname, setCityName] = useState("Udipi");
   const [searchpage, setSearchPage] = useState(false);
   const navigate = useNavigate();
   const ref = useRef(null);
@@ -105,7 +105,7 @@ function Home() {
                 onChange={async (e) => {
                   setText(e.target.value);
                   const response = await getDataFromApi(text);
-                  console.log(response);
+                  // console.log(response);
                   setCities(response);
                 }}
                 type="text"
@@ -126,6 +126,7 @@ function Home() {
                       }}
                       onClick={async () => {
                         setCityName(e);
+                        // console.log(e);
                         cities.length = 0;
                         ref1.current.value = "";
                       }}

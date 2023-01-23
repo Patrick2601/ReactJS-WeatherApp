@@ -4,6 +4,7 @@
   height: 90vh;
   align-items: center;
   flex-direction: column;
+  overflow: scroll;
 }
 .card-container-web {
   /* border: 1px solid red; */
@@ -11,6 +12,7 @@
   height: 80vh;
   align-items: center;
   flex-direction: column;
+  overflow-y: scroll;
 }
 .card {
   /* border: 1px solid; */
@@ -61,8 +63,8 @@
 .web {
   /* border: 1px solid; */
   display: flex;
-  width: 260px;
-  height: 60px;
-  justify-content: space-between;
+  width: 300px;
+  height: 80px;
+  justify-content: space-around;
   align-items: center;
 }

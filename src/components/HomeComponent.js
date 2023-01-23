@@ -7,16 +7,21 @@ import likeinactive from "../assets/images/icon_favourite.png";
 import moment from "moment";
 import sunny from "../assets/images/01_Home/background/icon_mostly_sunny.png";
 import { getWeather } from "../services/Api";
+import { useDispatch } from "react-redux";
+import { addSearchData } from "../Redux/WeatherSlice";
 function HomeComponent({ cityname }) {
+  const dispatch = useDispatch();
   const [tempToggle, settemptoggle] = useState(false);
   const [liked, setliked] = useState(false);
   const [weatherData, setWeatherData] = useState({});
   useEffect(() => {
     setTimeout(async () => {
-      const response = await getWeather(cityname.name);
-      console.log("%%%%%", response);
-      setWeatherData(response);
-    }, 500);
+      if (cityname.name !== undefined) {
+        const response = await getWeather(cityname.name);
+        setWeatherData(response);
+        dispatch(addSearchData(response));
+      }
+    }, 1000);
   }, [cityname]);
   return (
     <div>
@@ -34,7 +39,7 @@ function HomeComponent({ cityname }) {
                 <button
                   className="favbtn"
                   onClick={() => {
-                    console.log("gggg");
+                    // console.log("gggg");
                     setliked(!liked);
                   }}
                 >
@@ -44,7 +49,7 @@ function HomeComponent({ cityname }) {
                 <button
                   className="favbtn"
                   onClick={() => {
-                    console.log("gggg");
+                    // console.log("gggg");
                     setliked(!liked);
                   }}
                 >

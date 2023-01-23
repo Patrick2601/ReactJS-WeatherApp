@@ -5,7 +5,7 @@ import img3 from "../assets/images/01_Home/background/Group6/icon_precipitation_
 import img4 from "../assets/images/01_Home/background/Group8/icon_humidity_info.png";
 import img5 from "../assets/images/01_Home/background/Group10/icon_visibility_info.png";
 function Weatherdetails({ WeatherData }) {
-  console.log("@@@@", WeatherData);
+  // console.log("@@@@", WeatherData);
   return (
     <div className="detailcontainer">
       {JSON.stringify(WeatherData) !== "{}" ? (
