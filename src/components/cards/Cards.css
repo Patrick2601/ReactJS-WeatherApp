@@ -13,8 +13,10 @@
   align-items: center;
   flex-direction: column;
   overflow-y: scroll;
+ 
 }
 .card {
+  border-radius: 7px;
   /* border: 1px solid; */
   height: 100px;
   width: 90%;

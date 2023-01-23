@@ -2,21 +2,22 @@ import React, { useEffect } from "react";
 import "./Cards.css";
 import likeactive from "../../assets/images/02_Home_Favourite/Group/icon_favourite_Active.png";
 import likeinactive from "../../assets/images/icon_favourite.png";
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { useDispatch, useSelector } from "react-redux";
-import { filterFavData, setState } from "../../Redux/WeatherSlice";
+import {
+  addToFavData,
+  filterFavData,
+  setState,
+} from "../../Redux/WeatherSlice";
 
 function CardMobile({ weatherData }) {
   return (
     <div className="card-container">
-      {/* <div className="top-text-div">
-        <p>{weatherData.length} City added to favourite </p>
-        <p>Remove all </p>
-      </div> */}
       {weatherData.length > 0
         ? weatherData.map((e) => {
             return (
-              <div className="card">
+              <div key={e.id} className="card">
                 <div className="card-innertext-div">
                   <p className="card-city-text">{e.name}</p>
                   <img src={likeactive} className="card-climate-img" />
@@ -32,18 +33,20 @@ function CardMobile({ weatherData }) {
     </div>
   );
 }
+
 function CardWeb({ weatherData }) {
   const state = useSelector((state) => state.weather.state);
   useEffect(() => {}, [state]);
   const favData = useSelector((state) => state.weather.favData);
   const dispatch = useDispatch();
+  console.log("favDDDDDD", favData);
   return (
     <div>
       <div className="card-container-web">
         {weatherData.length > 0
           ? weatherData.map((e) => {
               return (
-                <div className="card">
+                <div className="card" key={e.id}>
                   <p className="card-city-text">{e.name}</p>
                   <div className="web">
                     <img src={likeactive} className="card-climate-img" />
@@ -58,12 +61,11 @@ function CardWeb({ weatherData }) {
                     </span>
                   </div>
                   {favData.length > 0 ? (
-                    favData.filter((item) => item.name === e.name).length >
-                    0 ? (
+                    favData.filter((item) => item.id === e.id).length > 0 ? (
                       <button
                         onClick={() => {
-                          dispatch(filterFavData(e.name));
-                          dispatch(setState())
+                          dispatch(filterFavData(e.id));
+                          dispatch(setState());
                         }}
                         style={{ border: "0px", background: "transparent" }}
                       >
@@ -72,6 +74,18 @@ function CardWeb({ weatherData }) {
                     ) : (
                       <button
                         onClick={() => {
+                          dispatch(addToFavData(e));
+                          dispatch(setState());
+                          toast.success("Added to Favourite", {
+                            position: "top-right",
+                            autoClose: 1000,
+                            hideProgressBar: true,
+                            closeOnClick: true,
+                            pauseOnHover: false,
+                            draggable: false,
+                            progress: undefined,
+                            theme: "dark",
+                          });
                           // dispatch(filterFavData(e.name));
                         }}
                         style={{ border: "0px", background: "transparent" }}
@@ -85,6 +99,18 @@ function CardWeb({ weatherData }) {
                   ) : (
                     <button
                       onClick={() => {
+                        dispatch(addToFavData(e));
+                        dispatch(setState());
+                        toast.success("Added to Favourite", {
+                          position: "top-right",
+                          autoClose: 1000,
+                          hideProgressBar: true,
+                          closeOnClick: true,
+                          pauseOnHover: false,
+                          draggable: false,
+                          progress: undefined,
+                          theme: "dark",
+                        });
                         // dispatch(filterFavData(e.name));
                       }}
                       style={{ border: "0px", background: "transparent" }}
@@ -97,6 +123,7 @@ function CardWeb({ weatherData }) {
             })
           : null}
       </div>
+      <ToastContainer />
     </div>
   );
 }

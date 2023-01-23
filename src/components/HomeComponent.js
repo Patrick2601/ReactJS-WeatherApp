@@ -26,14 +26,28 @@ function HomeComponent({ cityname }) {
     setTimeout(async () => {
       if (cityname.name !== undefined) {
         const response = await getWeather(cityname.name);
-        setWeatherData(response);
-        dispatch(addSearchData(response));
+        console.log("res", response);
+        if (response === undefined) {
+          console.log("i m in");
+          toast.error("Error", {
+            position: "top-right",
+            autoClose: 1000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: false,
+            progress: undefined,
+            theme: "dark",
+          });
+        } else {
+          setWeatherData(response);
+          dispatch(addSearchData(response));
+        }
       }
     }, 1000);
   }, [cityname]);
   console.log("gaggadad", weatherData);
   const addFav = () => {
-    console.log("gggg");
     dispatch(addToFavData(weatherData));
     setliked(!liked);
     toast.success("Added to Favourite", {
@@ -65,7 +79,7 @@ function HomeComponent({ cityname }) {
                     className="favbtn"
                     onClick={() => {
                       // console.log("gggg88");
-                      dispatch(filterFavData(cityname.name));
+                      dispatch(filterFavData(weatherData.id));
                       setliked(!liked);
                     }}
                   >

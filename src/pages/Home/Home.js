@@ -29,7 +29,7 @@ function Home() {
   const dispatch = useDispatch();
 
   const openDrawer = () => {
-    console.log("ggg");
+    // console.log("ggg");
     ref.current.style.display = "block";
   };
 
