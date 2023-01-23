@@ -23,7 +23,7 @@ const weatherSlice = createSlice({
     addToFavData: (state, action) => {
       const cities = state.favData.map((e) => e.name);
       if (cities.includes(action.payload.name)) {
-        alert("City already exist");
+        console.log("City already exist");
       } else {
         state.allData.push(action.payload);
         state.favData.push(action.payload);
@@ -34,6 +34,7 @@ const weatherSlice = createSlice({
     },
     deleteFavData: (state, action) => {
       state.favData = [];
+      state.allData = [];
     },
     setState: (state, action) => {
       state.state = !state.state;

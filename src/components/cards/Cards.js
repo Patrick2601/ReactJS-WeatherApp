@@ -1,8 +1,10 @@
 import React, { useEffect } from "react";
 import "./Cards.css";
 import likeactive from "../../assets/images/02_Home_Favourite/Group/icon_favourite_Active.png";
+import likeinactive from "../../assets/images/icon_favourite.png";
+
 import { useDispatch, useSelector } from "react-redux";
-import { filterFavData } from "../../Redux/WeatherSlice";
+import { filterFavData, setState } from "../../Redux/WeatherSlice";
 
 function CardMobile({ weatherData }) {
   return (
@@ -33,14 +35,11 @@ function CardMobile({ weatherData }) {
 function CardWeb({ weatherData }) {
   const state = useSelector((state) => state.weather.state);
   useEffect(() => {}, [state]);
- const dispatch=useDispatch()
+  const favData = useSelector((state) => state.weather.favData);
+  const dispatch = useDispatch();
   return (
     <div>
       <div className="card-container-web">
-        {/* <div className="top-text-div">
-          <p>{weatherData.length} City added to favourite </p>
-          <p>Remove all </p>
-        </div> */}
         {weatherData.length > 0
           ? weatherData.map((e) => {
               return (
@@ -58,13 +57,41 @@ function CardWeb({ weatherData }) {
                       {e.weather[0].main}
                     </span>
                   </div>
-                  <button 
-                  onClick={()=>{
-                    dispatch(filterFavData(e.name));
-                  }}
-                  style={{ border: "0px", background: "transparent" }}>
-                    <img src={likeactive} className="card-likeactive-img" />
-                  </button>
+                  {favData.length > 0 ? (
+                    favData.filter((item) => item.name === e.name).length >
+                    0 ? (
+                      <button
+                        onClick={() => {
+                          dispatch(filterFavData(e.name));
+                          dispatch(setState())
+                        }}
+                        style={{ border: "0px", background: "transparent" }}
+                      >
+                        <img src={likeactive} className="card-likeactive-img" />
+                      </button>
+                    ) : (
+                      <button
+                        onClick={() => {
+                          // dispatch(filterFavData(e.name));
+                        }}
+                        style={{ border: "0px", background: "transparent" }}
+                      >
+                        <img
+                          src={likeinactive}
+                          className="card-likeactive-img"
+                        />
+                      </button>
+                    )
+                  ) : (
+                    <button
+                      onClick={() => {
+                        // dispatch(filterFavData(e.name));
+                      }}
+                      style={{ border: "0px", background: "transparent" }}
+                    >
+                      <img src={likeinactive} className="card-likeactive-img" />
+                    </button>
+                  )}
                 </div>
               );
             })

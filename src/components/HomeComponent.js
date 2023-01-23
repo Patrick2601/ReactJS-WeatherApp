@@ -31,7 +31,7 @@ function HomeComponent({ cityname }) {
       }
     }, 1000);
   }, [cityname]);
-  console.log("favDatt", favData);
+  console.log("gaggadad", weatherData);
   const addFav = () => {
     console.log("gggg");
     dispatch(addToFavData(weatherData));
@@ -60,7 +60,7 @@ function HomeComponent({ cityname }) {
             </p>
             <div>
               {favData.length > 0 ? (
-                favData.filter((e) => e.name === cityname.name).length > 0 ? (
+                favData.filter((e) => e.id === weatherData.id).length > 0 ? (
                   <button
                     className="favbtn"
                     onClick={() => {
@@ -93,19 +93,7 @@ function HomeComponent({ cityname }) {
               )}
 
               <span className="addfavtext">Add to favourite</span>
-              <ToastContainer
-              // position="top-right"
-              // autoClose={5000}
-              // hideProgressBar={false}
-              // newestOnTop={false}
-              // closeOnClick
-              // rtl={false}
-              // pauseOnFocusLoss
-              // draggable
-              // pauseOnHover
-              // theme="light"
-              // transition='zoom'
-              />
+              <ToastContainer />
             </div>
             <img src={sunny} className="climateimg" />
             <div className="temperaturetext">
