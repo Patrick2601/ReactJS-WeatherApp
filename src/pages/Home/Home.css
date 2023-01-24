@@ -83,14 +83,10 @@
   background: transparent;
   size: 20px;
 }
-.topnav {
-  display: none;
-}
+
 .searchdiv {
   border: 1rem solid;
   border-width: 0.01em;
-  /* border-style: solid; */
-
   display: none;
   width: 500px;
   height: 40px;
@@ -137,13 +133,14 @@
   padding-left: 2px;
 }
 .topnav {
-  /* border: 1px solid; */
+  display: none;
   border-bottom: 1px solid rgba(225, 225, 255, 0.6);
   padding: 0px 50px;
   /* padding-bottom: 2.4px; */
   /* box-sizing: border-box; */
   /* height: 2.8vh; */
   position: relative;
+  height: 1.4rem;
 }
 .datetime {
   color: white;
@@ -162,9 +159,41 @@
 .tablink {
   color: white;
   text-decoration: none;
+  /* margin-right: 20px; */
+  font-size: 1.2rem;
+  position: absolute;
+  left: 0px;
+  width: 80px;
+  bottom: -1px;
+  /* border: 1px solid; */
+  text-align: center;
+
+  /* box-sizing: border-box; */
+}
+.tablink1 {
+  color: white;
+  text-decoration: none;
+  margin-right: 20px;
+  font-size: 1.1rem;
+  position: absolute;
+  left: 80px;
+  /* border: 1px solid; */
+  width: 130px;
+  text-align: center;
+  bottom: -1px;
+  /* border: 1px solid; */
+}
+.tablink2 {
+  color: white;
+  text-decoration: none;
   margin-right: 20px;
   font-size: 1.2rem;
+  position: absolute;
+  left: 210px;
+  width: 170px;
+  bottom: -1px;
   /* border: 1px solid; */
+  text-align: center;
 }
 .drawer {
   /* border: 1px solid; */
@@ -190,7 +219,6 @@
   font-size: 1.6rem;
   text-align: center;
 }
-
 
 /* ==================================================================== */
 
@@ -241,7 +269,7 @@
     display: none;
   }
   .datetime {
-    right: 30px;
+    right: 5px;
 
     /* border: 1px solid; */
   }
@@ -251,7 +279,7 @@
     padding: 0px 100px;
   }
   .datetime {
-    right: 0px;
+    right: 5px;
   }
   .datetimetext {
     display: contents;
@@ -266,7 +294,13 @@
   .drawer {
     display: none;
   }
-  .mainheader {
+  /* .mainheader {
+    border: 1px solid red;
+  } */
+  .weatherLogo {
+    position: absolute;
+  }
+  .topnav {
     /* border: 1px solid red; */
   }
 }

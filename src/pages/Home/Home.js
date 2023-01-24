@@ -17,7 +17,7 @@ import moment from "moment";
 import { getDataFromApi } from "../../services/Api";
 import { useDispatch } from "react-redux";
 import { setState } from "../../Redux/WeatherSlice";
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid";
 function Home() {
   const [text, setText] = useState("");
   const [cities, setCities] = useState([]);
@@ -108,7 +108,7 @@ function Home() {
                 onChange={async (e) => {
                   setText(e.target.value);
                   const response = await getDataFromApi(text);
-                  
+
                   setCities(response);
                 }}
                 type="text"
@@ -122,7 +122,7 @@ function Home() {
                 <div className="cities-div-web">
                   {cities.map((e) => (
                     <button
-                    key={uuidv4()}
+                      key={uuidv4()}
                       style={{
                         background: "transparent",
                         border: "0px",
@@ -130,7 +130,7 @@ function Home() {
                       }}
                       onClick={async () => {
                         setCityName(e);
-                    
+
                         cities.length = 0;
                         ref1.current.value = "";
                         dispatch(setState());
@@ -151,7 +151,8 @@ function Home() {
                 return {
                   borderBottom: isActive ? "3px solid #FFA222" : "none",
                   color: isActive ? "#FFA222" : "white",
-                  fontSize: "1.1rem",
+                  fontSize: isActive ? "1.1rem" : "1rem",
+                  transition:isActive? 'all 0.1s ease':null
                 };
               }}
             >
@@ -159,12 +160,13 @@ function Home() {
             </NavLink>
             <NavLink
               to="/favourite"
-              className="tablink"
+              className="tablink1"
               style={({ isActive }) => {
                 return {
                   borderBottom: isActive ? "3px solid #FFA222" : "none",
                   color: isActive ? "#FFA222" : "white",
-                  fontSize: "1.1rem",
+                  fontSize: isActive ? "1.1rem" : "1rem",
+                  transition:isActive? 'all 0.1s':null
                 };
               }}
             >
@@ -172,12 +174,13 @@ function Home() {
             </NavLink>
             <NavLink
               to="/Recent"
-              className="tablink"
+              className="tablink2"
               style={({ isActive }) => {
                 return {
                   borderBottom: isActive ? "3px solid #FFA222" : "none",
                   color: isActive ? "#FFA222" : "white",
-                  fontSize: "1.1rem",
+                  fontSize: isActive ? "1.1rem" : "1rem",
+                  transition:isActive? 'all 0.1s':null
                 };
               }}
             >

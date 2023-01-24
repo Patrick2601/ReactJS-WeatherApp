@@ -57,7 +57,7 @@ function CardWeb({ weatherData }) {
                     <span> °C </span>
                     <span className="card-climate-text">
                       {" "}
-                      {e.weather[0].main}
+                      {e.weather[0].description}
                     </span>
                   </div>
                   {favData.length > 0 ? (
