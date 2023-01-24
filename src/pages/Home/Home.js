@@ -29,7 +29,6 @@ function Home() {
   const dispatch = useDispatch();
 
   const openDrawer = () => {
-    // console.log("ggg");
     ref.current.style.display = "block";
   };
 
@@ -60,7 +59,9 @@ function Home() {
             ref.current.style.display = "none";
           }}
         >
-          <p className="drawer-text">Home</p>
+          <p style={{ cursor: "pointer" }} className="drawer-text">
+            Home
+          </p>
         </button>
         <button
           className="btn"
@@ -69,7 +70,9 @@ function Home() {
             ref.current.style.display = "none";
           }}
         >
-          <p className="drawer-text">favourite</p>
+          <p style={{ cursor: "pointer" }} className="drawer-text">
+            favourite
+          </p>
         </button>
         <button
           className="btn"
@@ -78,7 +81,9 @@ function Home() {
             ref.current.style.display = "none";
           }}
         >
-          <p className="drawer-text">Recent Search</p>
+          <p style={{ cursor: "pointer" }} className="drawer-text">
+            Recent Search
+          </p>
         </button>
       </div>
       {!searchpage ? (
@@ -130,10 +135,10 @@ function Home() {
                       }}
                       onClick={async () => {
                         setCityName(e);
-
                         cities.length = 0;
                         ref1.current.value = "";
                         dispatch(setState());
+                        navigate("/");
                       }}
                     >
                       <p>{e.name}</p>
@@ -152,7 +157,7 @@ function Home() {
                   borderBottom: isActive ? "3px solid #FFA222" : "none",
                   color: isActive ? "#FFA222" : "white",
                   fontSize: isActive ? "1.1rem" : "1rem",
-                  transition:isActive? 'all 0.1s ease':null
+                  transition: isActive ? "all 0.1s ease" : null,
                 };
               }}
             >
@@ -166,7 +171,7 @@ function Home() {
                   borderBottom: isActive ? "3px solid #FFA222" : "none",
                   color: isActive ? "#FFA222" : "white",
                   fontSize: isActive ? "1.1rem" : "1rem",
-                  transition:isActive? 'all 0.1s':null
+                  transition: isActive ? "all 0.1s" : null,
                 };
               }}
             >
@@ -180,7 +185,7 @@ function Home() {
                   borderBottom: isActive ? "3px solid #FFA222" : "none",
                   color: isActive ? "#FFA222" : "white",
                   fontSize: isActive ? "1.1rem" : "1rem",
-                  transition:isActive? 'all 0.1s':null
+                  transition: isActive ? "all 0.1s" : null,
                 };
               }}
             >

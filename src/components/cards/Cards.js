@@ -91,7 +91,6 @@ function CardWeb({ weatherData }) {
                             progress: undefined,
                             theme: "dark",
                           });
-                          // dispatch(filterFavData(e.name));
                         }}
                         style={{ border: "0px", background: "transparent" }}
                       >
@@ -116,7 +115,6 @@ function CardWeb({ weatherData }) {
                           progress: undefined,
                           theme: "dark",
                         });
-                        // dispatch(filterFavData(e.name));
                       }}
                       style={{ border: "0px", background: "transparent" }}
                     >
