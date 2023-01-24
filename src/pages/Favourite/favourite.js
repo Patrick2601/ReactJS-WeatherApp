@@ -7,7 +7,7 @@ import { deleteFavData } from "../../Redux/WeatherSlice";
 function FavouriteMobile() {
   const weatherData = useSelector((state) => state.weather.searchData);
   const favdata = useSelector((state) => state.weather.favData);
-  const dispatch=useDispatch()
+  const dispatch = useDispatch();
   return (
     <div className="favcontainer">
       {favdata.length === 0 ? (
@@ -17,17 +17,16 @@ function FavouriteMobile() {
         </div>
       ) : null}
 
-
       {favdata.length !== 0 ? (
         <div className="top-text-div">
           <p>{favdata.length} City added to Favourite </p>
           <button
             onClick={() => {
-              dispatch(deleteFavData())
+              dispatch(deleteFavData());
             }}
             style={{ background: "transparent", border: "0px" }}
           >
-            <p >Remove all </p>
+            <p style={{ cursor: "pointer" }}>Remove all </p>
           </button>
         </div>
       ) : null}

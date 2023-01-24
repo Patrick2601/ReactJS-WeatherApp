@@ -3,6 +3,8 @@ import "./Cards.css";
 import likeactive from "../../assets/images/02_Home_Favourite/Group/icon_favourite_Active.png";
 import likeinactive from "../../assets/images/icon_favourite.png";
 import { ToastContainer, toast } from "react-toastify";
+import sunny from "../../assets/images/01_Home/background/icon_mostly_sunny.png";
+
 import "react-toastify/dist/ReactToastify.css";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -20,7 +22,7 @@ function CardMobile({ weatherData }) {
               <div key={e.id} className="card">
                 <div className="card-innertext-div">
                   <p className="card-city-text">{e.name}</p>
-                  <img src={likeactive} className="card-climate-img" />
+                  <img src={sunny} className="card-climate-img" />
                   <span className="card-temp-text"> 31 </span>
                   <span> °C </span>
                   <span className="card-climate-text"> Mostly sunny</span>
@@ -49,7 +51,7 @@ function CardWeb({ weatherData }) {
                 <div className="card" key={e.id}>
                   <p className="card-city-text">{e.name}</p>
                   <div className="web">
-                    <img src={likeactive} className="card-climate-img" />
+                    <img src={sunny} className="card-climate-img" />
                     <span className="card-temp-text">
                       {" "}
                       {(e.main.temp_min - 273.15).toFixed(1)}{" "}

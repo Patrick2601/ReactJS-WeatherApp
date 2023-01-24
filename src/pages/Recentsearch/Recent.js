@@ -32,7 +32,7 @@ function Recent() {
             }}
             style={{ background: "transparent", border: "0px" }}
           >
-            <p>Remove all </p>
+            <p style={{ cursor: "pointer" }}>Remove all </p>
           </button>
         </div>
       ) : null}

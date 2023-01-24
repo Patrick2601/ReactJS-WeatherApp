@@ -13,7 +13,6 @@
   align-items: center;
   flex-direction: column;
   overflow-y: scroll;
- 
 }
 .card {
   border-radius: 7px;
@@ -27,6 +26,7 @@
   align-items: center;
   padding: 0px 20px;
   box-sizing: border-box;
+  position: relative;
 }
 .top-text-div {
   /* border: 1px solid; */
@@ -34,7 +34,6 @@
   width: 90%;
   justify-content: space-between;
   font-size: 8rem;
-
   padding: 20px 0px;
   box-sizing: border-box;
 }
@@ -45,6 +44,8 @@
   color: #fad05b;
   text-transform: capitalize;
   font-size: 1rem;
+  /* border: 1px solid; */
+  width: 7rem;
 }
 .card-temp-text {
   font-size: 1.4rem;
@@ -63,10 +64,12 @@
   /* border: 1px solid; */
 }
 .web {
-  /* border: 1px solid; */
+  border: 1px solid;
   display: flex;
-  width: 300px;
+  width: 18rem;
   height: 80px;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
+  /* position: absolute;
+left: 40%; */
 }
