@@ -52,11 +52,14 @@ function CardWeb({ weatherData }) {
                   <p className="card-city-text">{e.name}</p>
                   <div className="web">
                     <img src={sunny} className="card-climate-img" />
-                    <span className="card-temp-text">
-                      {" "}
-                      {(e.main.temp_min - 273.15).toFixed(1)}{" "}
-                    </span>
-                    <span> °C </span>
+                    <div style={{ position: "absolute", left: "80px" }}>
+                      <span className="card-temp-text">
+                        {" "}
+                        {(e.main.temp_min - 273.15).toFixed(1)}{" "}
+                      </span>
+                      <span> °C </span>
+                    </div>
+
                     <span className="card-climate-text">
                       {" "}
                       {e.weather[0].description}

@@ -53,6 +53,9 @@
 }
 .card-climate-text {
   font-size: 1rem;
+  /* border: 1px solid; */
+  text-align: center;
+  width: 180px;
 }
 .card-innertext-div {
   /* border: 1px solid; */
@@ -64,12 +67,12 @@
   /* border: 1px solid; */
 }
 .web {
-  border: 1px solid;
+  /* border: 1px solid; */
   display: flex;
   width: 18rem;
   height: 80px;
   justify-content: space-between;
   align-items: center;
-  /* position: absolute;
-left: 40%; */
+ position: relative;
+
 }
