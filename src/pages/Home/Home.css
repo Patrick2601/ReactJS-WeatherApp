@@ -28,8 +28,18 @@
   margin-top: 10px;
 }
 .baricon {
-  color: white;
+  color: rgb(124, 47, 47);
   font-size: 1.5rem;
+}
+.baricon:hover {
+  /* position: absolute; */
+  font-size: 2rem;
+  transition: all 0.1s;
+}
+.searchlogo:hover {
+  transition: all 0.1s;
+
+  transform: scale(1.5);
 }
 .weatherLogo {
   margin-right: 12rem;
@@ -211,9 +221,8 @@
   box-sizing: border-box;
   z-index: 1;
   border-radius: 0px 20px 20px 0px;
-  border-right: 1px  solid;
-  box-shadow: 1px 0px 20px rgb(207, 196, 196,0.3);
-
+  border-right: 1px solid;
+  box-shadow: 1px 0px 20px rgb(207, 196, 196, 0.3);
 }
 .drawer-text {
   color: white;
@@ -305,8 +314,5 @@
   } */
   .weatherLogo {
     position: absolute;
-  }
-  .topnav {
-    /* border: 1px solid red; */
   }
 }

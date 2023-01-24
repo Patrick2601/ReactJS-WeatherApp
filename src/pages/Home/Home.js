@@ -36,6 +36,7 @@ function Home() {
     <div className="main">
       <div ref={ref} className="drawer">
         <button
+        
           style={{ border: "0px", background: "transparent" }}
           onClick={() => {
             ref.current.style.display = "none";
