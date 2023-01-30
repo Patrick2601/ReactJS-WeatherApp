@@ -12,23 +12,25 @@ import {
   addSearchData,
   addToFavData,
   filterFavData,
+  setCity,
 } from "../Redux/WeatherSlice";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function HomeComponent({ cityname }) {
+  const weatherData = useSelector((state) => state.weather.city);
   const dispatch = useDispatch();
   const [tempToggle, settemptoggle] = useState(false);
   const [liked, setliked] = useState(false);
-  const [weatherData, setWeatherData] = useState({});
+  // const [weatherData, setWeatherData] = useState({});
   const favData = useSelector((state) => state.weather.favData);
   useEffect(() => {
     setTimeout(async () => {
       if (cityname.name !== undefined) {
         const response = await getWeather(cityname.name);
-        console.log("res", response);
+        // console.log("res", response);
         if (response === undefined) {
-          console.log("i m in");
+          // console.log("i m in");
           toast.error("Error", {
             position: "top-right",
             autoClose: 1000,
@@ -40,13 +42,14 @@ function HomeComponent({ cityname }) {
             theme: "dark",
           });
         } else {
-          setWeatherData(response);
+          // setWeatherData(response);
           dispatch(addSearchData(response));
+          dispatch(setCity(response));
         }
       }
     }, 1000);
   }, [cityname]);
-  console.log("gaggadad", weatherData);
+  // console.log("gaggadad", weatherData);
   const addFav = () => {
     dispatch(addToFavData(weatherData));
     setliked(!liked);
@@ -69,9 +72,7 @@ function HomeComponent({ cityname }) {
             <p className="datetimetext">
               {moment().format("ddd, DD MMM YYYY h:mm:a")}
             </p>
-            <p className="citytext">
-              {cityname.name},{cityname.region}
-            </p>
+            <p className="citytext">{weatherData.name}</p>
             <div>
               {favData.length > 0 ? (
                 favData.filter((e) => e.id === weatherData.id).length > 0 ? (

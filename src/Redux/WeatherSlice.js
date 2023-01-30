@@ -7,8 +7,13 @@ const weatherSlice = createSlice({
     searchData: [],
     favData: [],
     state: false,
+    city: {},
   },
   reducers: {
+    setCity: (state, action) => {
+      state.city = action.payload;
+      // console.log('565656',action.payload);
+    },
     addSearchData: (state, action) => {
       const cities = state.searchData.map((e) => e.name);
       if (cities.includes(action.payload.name)) {
@@ -44,6 +49,7 @@ const weatherSlice = createSlice({
 });
 
 export const {
+  setCity,
   addSearchData,
   deleteSearchData,
   addToFavData,

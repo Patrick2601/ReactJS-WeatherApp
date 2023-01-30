@@ -21,7 +21,7 @@ import { v4 as uuidv4 } from "uuid";
 function Home() {
   const [text, setText] = useState("");
   const [cities, setCities] = useState([]);
-  const [cityname, setCityName] = useState("Udipi");
+  const [cityname, setCityName] = useState("");
   const [searchpage, setSearchPage] = useState(false);
   const navigate = useNavigate();
   const ref = useRef(null);
@@ -114,7 +114,6 @@ function Home() {
                 onChange={async (e) => {
                   setText(e.target.value);
                   const response = await getDataFromApi(text);
-
                   setCities(response);
                 }}
                 type="text"

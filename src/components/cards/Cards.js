@@ -4,12 +4,14 @@ import likeactive from "../../assets/images/02_Home_Favourite/Group/icon_favouri
 import likeinactive from "../../assets/images/icon_favourite.png";
 import { ToastContainer, toast } from "react-toastify";
 import sunny from "../../assets/images/01_Home/background/icon_mostly_sunny.png";
+import { useNavigate } from "react-router-dom";
 
 import "react-toastify/dist/ReactToastify.css";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addToFavData,
   filterFavData,
+  setCity,
   setState,
 } from "../../Redux/WeatherSlice";
 
@@ -37,18 +39,26 @@ function CardMobile({ weatherData }) {
 }
 
 function CardWeb({ weatherData }) {
+  const navigate = useNavigate();
   const state = useSelector((state) => state.weather.state);
   useEffect(() => {}, [state]);
   const favData = useSelector((state) => state.weather.favData);
   const dispatch = useDispatch();
-  console.log("favDDDDDD", favData);
+  // console.log("favDDDDDD", favData);
   return (
     <div>
       <div className="card-container-web">
         {weatherData.length > 0
           ? weatherData.map((e) => {
               return (
-                <div className="card" key={e.id}>
+                <div
+                  onClick={() => {
+                    dispatch(setCity(e));
+                    navigate("/");
+                  }}
+                  className="card"
+                  key={e.id}
+                >
                   <p className="card-city-text">{e.name}</p>
                   <div className="web">
                     <img src={sunny} className="card-climate-img" />
@@ -74,7 +84,9 @@ function CardWeb({ weatherData }) {
                         }}
                         style={{ border: "0px", background: "transparent" }}
                       >
-                        <img src={likeactive} className="card-likeactive-img" />
+                        <img 
+                        
+                        src={likeactive} className="card-likeactive-img" />
                       </button>
                     ) : (
                       <button

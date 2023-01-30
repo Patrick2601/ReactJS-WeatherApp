@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { deleteFavData } from "../../Redux/WeatherSlice";
 
 function FavouriteMobile() {
+
+
   const weatherData = useSelector((state) => state.weather.searchData);
   const favdata = useSelector((state) => state.weather.favData);
   const dispatch = useDispatch();
