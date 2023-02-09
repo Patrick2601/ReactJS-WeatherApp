@@ -82,6 +82,8 @@
 }
 .climatetext {
   text-transform: capitalize;
+  /* border: 1px solid; */
+  margin-top: 20px;
 }
 .temperaturetext {
   font-size: 3rem;
@@ -289,6 +291,7 @@
   .temperaturetext {
     margin-top: 100px;
     align-self: center;
+    /* border: 1px solid; */
   }
   .datetimetext {
     display: none;

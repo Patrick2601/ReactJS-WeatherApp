@@ -1,0 +1,9 @@
+.switchTempature {
+  border: 1px solid rgb(255, 255, 255);
+  width: 53px;
+  height: 26px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+}

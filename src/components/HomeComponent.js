@@ -14,13 +14,15 @@ import {
   filterFavData,
   setCity,
 } from "../Redux/WeatherSlice";
+
+import SwitchButton from "./SwitchButton.js";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function HomeComponent({ cityname }) {
+  const [checked, setChecked] = useState(false);
   const weatherData = useSelector((state) => state.weather.city);
   const dispatch = useDispatch();
-  const [tempToggle, settemptoggle] = useState(false);
   const [liked, setliked] = useState(false);
   // const [weatherData, setWeatherData] = useState({});
   const favData = useSelector((state) => state.weather.favData);
@@ -49,6 +51,7 @@ function HomeComponent({ cityname }) {
       }
     }, 1000);
   }, [cityname]);
+  console.log("res", checked);
   // console.log("gaggadad", weatherData);
   const addFav = () => {
     dispatch(addToFavData(weatherData));
@@ -112,33 +115,27 @@ function HomeComponent({ cityname }) {
             </div>
             <img src={sunny} className="climateimg" />
             <div className="temperaturetext">
-              {!tempToggle ? (
+              {/* <SwitchButton checked={checked} setChecked={setChecked} /> */}
+              {!checked ? (
                 <>
                   <span className="temperaturetext">
                     {(weatherData.main.temp - 273.15).toFixed(1)}
                   </span>{" "}
-                  <button
-                    onClick={() => settemptoggle(!tempToggle)}
-                    style={{ border: "0px", background: "transparent" }}
-                  >
-                    <span>&#8451;{"  "}</span>
-                  </button>
+                  <button style={{ border: "0px", background: "transparent" }}>
+                    <SwitchButton checked={checked} setChecked={setChecked} />
+                  </button>{" "}
                 </>
               ) : (
                 <>
                   <span className="temperaturetext">
                     {((weatherData.main.temp - 273.15) * 1.8 + 32).toFixed(1)}
-                  </span>
-                  <button
-                    onClick={() => settemptoggle(!tempToggle)}
-                    style={{ border: "0px", background: "transparent" }}
-                  >
-                    {" "}
-                    <span>&#8457;</span>
-                  </button>
+                  </span>{" "}
+                  <button style={{ border: "0px", background: "transparent" }}>
+                    <SwitchButton checked={checked} setChecked={setChecked} />
+                  </button>{" "}
                 </>
               )}
-
+              {/* <SwitchButton checked={checked} setChecked={setChecked} /> */}
               <p className="climatetext">
                 {weatherData.weather[0].description}
               </p>
