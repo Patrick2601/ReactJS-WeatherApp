@@ -16,6 +16,9 @@
   opacity: 0;
   animation: search 1s ease 0.3s 1 forwards;
 }
+.detailcontainer::-webkit-scrollbar{
+  display: none;
+}
 .detailsbox {
   height: 60px;
   width: 180px;
