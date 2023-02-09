@@ -46,6 +46,7 @@
   font-size: 1rem;
   /* border: 1px solid; */
   width: 7rem;
+  cursor: pointer;
 }
 .card-temp-text {
   font-size: 1.4rem;

@@ -51,15 +51,17 @@ function CardWeb({ weatherData }) {
         {weatherData.length > 0
           ? weatherData.map((e) => {
               return (
-                <div
-                  onClick={() => {
-                    dispatch(setCity(e));
-                    navigate("/");
-                  }}
-                  className="card"
-                  key={e.id}
-                >
-                  <p className="card-city-text">{e.name}</p>
+                <div className="card" key={e.id}>
+                  <p
+                  
+                    onClick={() => {
+                      dispatch(setCity(e));
+                      navigate("/");
+                    }}
+                    className="card-city-text"
+                  >
+                    {e.name}
+                  </p>
                   <div className="web">
                     <img src={sunny} className="card-climate-img" />
                     <div style={{ position: "absolute", left: "80px" }}>
@@ -84,9 +86,7 @@ function CardWeb({ weatherData }) {
                         }}
                         style={{ border: "0px", background: "transparent" }}
                       >
-                        <img 
-                        
-                        src={likeactive} className="card-likeactive-img" />
+                        <img src={likeactive} className="card-likeactive-img" />
                       </button>
                     ) : (
                       <button
