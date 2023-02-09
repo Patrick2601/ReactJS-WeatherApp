@@ -50,7 +50,7 @@ function HomeComponent({ cityname }) {
         }
       }
     }, 1000);
-  }, [cityname]);
+  }, [cityname.name]);
   // console.log("res", checked);
   // console.log("gaggadad", weatherData);
   const addFav = () => {
@@ -73,7 +73,7 @@ function HomeComponent({ cityname }) {
         <>
           <div className="weatherdetails">
             <p className="datetimetext">
-              {moment().format("ddd, DD MMM YYYY h:mm:a")}
+              {moment().format("ddd, DD MMM YYYY h:mm A")}
             </p>
             <p className="citytext">{weatherData.name}</p>
             <div>

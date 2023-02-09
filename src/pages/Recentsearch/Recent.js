@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { CardMobile, CardWeb } from "../../components/cards/Cards";
 import { deleteSearchData, setState } from "../../Redux/WeatherSlice";
 
-function Recent() {
+function Recent({ setCityName }) {
   const dispatch = useDispatch();
   const weatherData = useSelector((state) => state.weather.searchData);
   const state = useSelector((state) => state.weather.state);
@@ -42,7 +42,7 @@ function Recent() {
             <CardMobile weatherData={weatherData} />
           </div>
           <div className="web-view">
-            <CardWeb weatherData={weatherData} />
+            <CardWeb weatherData={weatherData} setCityName={setCityName} />
           </div>
         </>
       ) : null}

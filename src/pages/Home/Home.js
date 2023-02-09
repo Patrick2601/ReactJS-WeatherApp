@@ -199,8 +199,8 @@ function Home() {
               Recent Search
             </NavLink>
             <span className="datetime">
-              {moment().format("ddd, DD MMM YYYY hh:mm")}
-              <span>{moment().format("a")}</span>
+              {moment().format("ddd, DD MMM YYYY hh:mm A")}
+              {/* <span>{moment().format("a")}</span> */}
             </span>
           </div>
         </>
@@ -211,8 +211,14 @@ function Home() {
       {/* <Outlet /> */}
       <Routes>
         <Route path="/" element={<HomeComponent cityname={cityname} />}></Route>
-        <Route path="/favourite" element={<Favourite />}></Route>
-        <Route path="/Recent" element={<Recent />}></Route>
+        <Route
+          path="/favourite"
+          element={<Favourite setCityName={setCityName} />}
+        ></Route>
+        <Route
+          path="/Recent"
+          element={<Recent setCityName={setCityName} />}
+        ></Route>
         <Route path="/Search" element={<Searchpage />}></Route>
       </Routes>
     </div>

@@ -38,10 +38,10 @@ function CardMobile({ weatherData }) {
   );
 }
 
-function CardWeb({ weatherData }) {
+function CardWeb({ weatherData, setCityName }) {
   const navigate = useNavigate();
-  const state = useSelector((state) => state.weather.state);
-  useEffect(() => {}, [state]);
+  // const state = useSelector((state) => state.weather.state);
+  // useEffect(() => {}, [state]);
   const favData = useSelector((state) => state.weather.favData);
   const dispatch = useDispatch();
   // console.log("favDDDDDD", favData);
@@ -53,9 +53,9 @@ function CardWeb({ weatherData }) {
               return (
                 <div className="card" key={e.id}>
                   <p
-                  
                     onClick={() => {
                       dispatch(setCity(e));
+                      setCityName(e);
                       navigate("/");
                     }}
                     className="card-city-text"

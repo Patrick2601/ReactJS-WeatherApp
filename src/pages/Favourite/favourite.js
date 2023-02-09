@@ -4,7 +4,7 @@ import { CardMobile, CardWeb } from "../../components/cards/Cards";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteFavData } from "../../Redux/WeatherSlice";
 
-function FavouriteMobile() {
+function FavouriteMobile({setCityName}) {
   const weatherData = useSelector((state) => state.weather.searchData);
   const favdata = useSelector((state) => state.weather.favData);
   const dispatch = useDispatch();
@@ -36,7 +36,7 @@ function FavouriteMobile() {
             <CardMobile weatherData={favdata} />
           </div>
           <div className="web-view">
-            <CardWeb weatherData={favdata} />
+            <CardWeb weatherData={favdata}  setCityName={setCityName}/>
           </div>
         </>
       ) : null}

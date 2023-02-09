@@ -169,9 +169,10 @@
   color: white;
   position: absolute;
   right: 100px;
-  font-size: 1.1rem;
+  font-size: 1rem;
   text-transform: capitalize;
   /* border: 1px solid; */
+  top: 0.3rem;
 }
 .datetime span {
   text-transform: uppercase;
