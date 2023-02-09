@@ -34,9 +34,14 @@ function Home() {
 
   return (
     <div className="main">
-      <div ref={ref} className="drawer">
-        <button
-        
+      <div
+        onClick={() => {
+          ref.current.style.display = "none";
+        }}
+        ref={ref}
+        className="drawer"
+      >
+        {/* <button
           style={{ border: "0px", background: "transparent" }}
           onClick={() => {
             ref.current.style.display = "none";
@@ -50,42 +55,44 @@ function Home() {
               position: "absolute",
               right: "10px",
               top: "10px",
+              color: "black",
             }}
           />
-        </button>
-        <button
-          className="btn"
-          onClick={() => {
-            navigate("/");
-            ref.current.style.display = "none";
-          }}
-        >
-          <p style={{ cursor: "pointer" }} className="drawer-text">
+        </button> */}
+        <ul>
+          <li
+            onClick={() => {
+              navigate("/");
+              ref.current.style.display = "none";
+            }}
+            style={{ cursor: "pointer" }}
+            className="drawer-text"
+          >
             Home
-          </p>
-        </button>
-        <button
-          className="btn"
-          onClick={() => {
-            navigate("/favourite");
-            ref.current.style.display = "none";
-          }}
-        >
-          <p style={{ cursor: "pointer" }} className="drawer-text">
+          </li>
+
+          <li
+            onClick={() => {
+              navigate("/favourite");
+              ref.current.style.display = "none";
+            }}
+            style={{ cursor: "pointer" }}
+            className="drawer-text"
+          >
             favourite
-          </p>
-        </button>
-        <button
-          className="btn"
-          onClick={() => {
-            navigate("/Recent");
-            ref.current.style.display = "none";
-          }}
-        >
-          <p style={{ cursor: "pointer" }} className="drawer-text">
+          </li>
+
+          <li
+            onClick={() => {
+              navigate("/Recent");
+              ref.current.style.display = "none";
+            }}
+            style={{ cursor: "pointer" }}
+            className="drawer-text"
+          >
             Recent Search
-          </p>
-        </button>
+          </li>
+        </ul>
       </div>
       {!searchpage ? (
         <>

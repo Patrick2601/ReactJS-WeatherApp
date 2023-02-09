@@ -219,32 +219,34 @@
   text-align: center;
 }
 .drawer {
-  /* border: 1px solid; */
+  /* border: 1px solid black; */
   height: 100vh;
-  width: 70vw;
+  width: 80vw;
   position: absolute;
-  display: none;
   animation-name: drawer;
   animation-duration: 0.3s;
   animation-iteration-count: 1;
   animation-timing-function: ease-in-out;
-  background-color: #8e4091;
-  padding: 20px;
-  box-sizing: border-box;
+  background-color: #ffffff;
+  /* padding: 30px; */
+  /* box-sizing: border-box; */
   z-index: 1;
-  border-radius: 0px 20px 20px 0px;
-  border-right: 1px solid;
-  box-shadow: 1px 0px 20px rgb(207, 196, 196, 0.3);
+  display: none;
+}
+.drawer ul {
+  border: 1px solid;
+  margin-top: 40px;
+  border: 1px solid;
 }
 .drawer-text {
-  color: white;
+  color: rgb(0, 0, 0);
   /* border: 1px solid; */
-  margin: 50px 0px;
   text-transform: capitalize;
-  font-size: 1.6rem;
-  text-align: center;
+  font-size: 1.1rem;
+  text-align: left;
   display: block;
-  width: 100%;
+  width: 80%;
+  margin-top: 10px;
 }
 
 /* ==================================================================== */

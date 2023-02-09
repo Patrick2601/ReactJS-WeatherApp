@@ -51,7 +51,7 @@ function HomeComponent({ cityname }) {
       }
     }, 1000);
   }, [cityname]);
-  console.log("res", checked);
+  // console.log("res", checked);
   // console.log("gaggadad", weatherData);
   const addFav = () => {
     dispatch(addToFavData(weatherData));
