@@ -51,17 +51,17 @@ function CardWeb({ weatherData, setCityName }) {
         {weatherData.length > 0
           ? weatherData.map((e) => {
               return (
-                <div className="card" key={e.id}>
-                  <p
-                    onClick={() => {
-                      dispatch(setCity(e));
-                      setCityName(e);
-                      navigate("/");
-                    }}
-                    className="card-city-text"
-                  >
-                    {e.name}
-                  </p>
+                <div
+                  onClick={(a) => {
+                    a.stopPropagation();
+                    dispatch(setCity(e));
+                    setCityName(e);
+                    navigate("/");
+                  }}
+                  className="card"
+                  key={e.id}
+                >
+                  <p className="card-city-text">{e.name}</p>
                   <div className="web">
                     <img src={sunny} className="card-climate-img" />
                     <div style={{ position: "absolute", left: "80px" }}>
@@ -80,7 +80,8 @@ function CardWeb({ weatherData, setCityName }) {
                   {favData.length > 0 ? (
                     favData.filter((item) => item.id === e.id).length > 0 ? (
                       <button
-                        onClick={() => {
+                        onClick={(a) => {
+                          a.stopPropagation();
                           dispatch(filterFavData(e.id));
                           dispatch(setState());
                         }}
@@ -90,7 +91,8 @@ function CardWeb({ weatherData, setCityName }) {
                       </button>
                     ) : (
                       <button
-                        onClick={() => {
+                        onClick={(a) => {
+                          a.stopPropagation();
                           dispatch(addToFavData(e));
                           dispatch(setState());
                           toast.success("Added to Favourite", {
@@ -114,7 +116,8 @@ function CardWeb({ weatherData, setCityName }) {
                     )
                   ) : (
                     <button
-                      onClick={() => {
+                      onClick={(a) => {
+                        a.stopPropagation();
                         dispatch(addToFavData(e));
                         dispatch(setState());
                         toast.success("Added to Favourite", {
