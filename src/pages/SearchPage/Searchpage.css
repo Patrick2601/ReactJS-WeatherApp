@@ -22,7 +22,11 @@
   margin: 10px auto;
   width: 93%;
   opacity: 0;
-  animation: search 1s ease  1 forwards;
+  animation: search 1s ease 1 forwards;
+}
+.city-text:hover {
+  color: rgb(255, 255, 255);
+  background-color: rgb(0, 0, 0, 0.5);
 }
 
 @keyframes search {

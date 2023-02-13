@@ -4,10 +4,7 @@ import searchlogo from "../../assets/images/01_Home/Group2/icon_search_white.png
 import weatherLogo from "../../assets/images/01_Home/logo_web.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
-import { useEffect, useRef } from "react";
-import { useState } from "react";
-import Weatherdetails from "../../components/Weatherdetails";
+import { useEffect, useRef, useState } from "react";
 import HomeComponent from "../../components/HomeComponent";
 import Favourite from "../Favourite/favourite";
 import Recent from "../Recentsearch/Recent";
@@ -27,6 +24,16 @@ function Home() {
   const ref = useRef(null);
   const ref1 = useRef(null);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    // ref1.current.focus();
+    // ref1.current.placeholder = "";
+    "Search here".split("").forEach((c, i) => {
+      setTimeout(() => {
+        ref1.current.placeholder+= c;
+      }, 100 * i);
+    });
+  }, []);
 
   const openDrawer = () => {
     ref.current.style.display = "block";
@@ -125,7 +132,7 @@ function Home() {
                 }}
                 type="text"
                 className="searchtextinput"
-                placeholder="Search here"
+                // placeholder="Search here"
                 name="search"
               />
 
